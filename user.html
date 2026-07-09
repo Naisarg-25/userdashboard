@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Table</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h2>add user</h2>
+  <form id="userform">
+       name: <input type="text" id="name" placeholder="Enter name" required><br>
+    email: <input type="email" id="email" placeholder="Enter email" required><br>
+    password: <input type="password" id="password" placeholder="Enter password" required><br>
+        <button type="submit">add user</button>
+    </form>
+    <br>
+    <h2>Search Users</h2>
+    <input type="text" id="search" placeholder="Enter name or email">
+    <br><br>
+  <h2>Users List</h2>
+  <table border="1" id="usertable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>edit</th>
+        <th>delete</th>
+      </tr>
+    </thead>
+    <tbody>    </tbody>
+  </table>
+  <h2>login</h2>
+    <form id="loginform">
+      email: <input type="email" id="loginEmail" placeholder="Enter email" required><br>
+      password: <input type="password" id="loginPassword" placeholder="Enter password" required><br>
+      <button type="submit">login</button>
+    </form> 
+    
+    <h2>profile</h2>
+    <button id="getprofile">get profile</button>
+    <pre id="profile"></pre>
+</body>
+<script src="script.js"></script>
+</html>
