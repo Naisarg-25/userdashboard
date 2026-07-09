@@ -1,4 +1,6 @@
-axios.get("http://localhost:3000/users")
+const url = "https://userdashboard-yrs8.onrender.com";
+
+axios.get(`${url}/users`)
 .then(res => {
   const users = res.data;
   const userrow = document.querySelector('#usertable tbody');
@@ -15,7 +17,7 @@ axios.get("http://localhost:3000/users")
     editCell.onclick = function() {
       const newName = prompt("Enter new name:", user.name);
       if (newName === null) return; // user cancelled
-      axios.put(`http://localhost:3000/users/${user._id}`, {
+      axios.put(`${url}/users/${user._id}`, {
           name: newName,
         })
         .then(res => {  
@@ -26,7 +28,7 @@ axios.get("http://localhost:3000/users")
     const deleteCell = document.createElement('button');
     deleteCell.textContent = "Delete";
     deleteCell.onclick = function() {
-      axios.delete(`http://localhost:3000/users/${user._id}`)
+      axios.delete(`${url}/users/${user._id}`)
         .then(() => {
           userrow.removeChild(row);
         })
@@ -49,7 +51,7 @@ document.getElementById('userform').addEventListener('submit', function(event) {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
-axios.post("http://localhost:3000/users", {
+axios.post(`${url}/users`, {
   name,
   email,
   password
@@ -79,7 +81,7 @@ document.getElementById('loginform').addEventListener('submit', function(event) 
     const email = document.getElementById('loginEmail').value;
   const password = document.getElementById('loginPassword').value;
 
-  axios.post("http://localhost:3000/login", {email, password})
+  axios.post(`${url}/login`, {email, password})
   .then(res => {
     localStorage.setItem("token", res.data.token);
     alert("Login successful");
@@ -95,7 +97,7 @@ document.getElementById('getprofile').addEventListener('click', function() {
     return;
   }
   
-  axios.get("http://localhost:3000/profile", {
+  axios.get(`${url}/profile`, {
     headers:{
       Authorization: `Bearer ${token}`
     }
